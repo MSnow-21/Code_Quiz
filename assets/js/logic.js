@@ -1,18 +1,54 @@
-var timerEl = document.getElementById("time");
-var startEl = document.getElementById("start-screen");
-var start = document.getElementById("start");
-var questionsEL = document.getElementId ("questions");
-var title = document.getElementById("questions-title");
-var choices = document.getElementById("choices");
-var endscreen = document.getElementById("end-screen");
-var initials = document.getElementById("initials");
-var submitEL = document.getElementById("submit");
-var finalscoreEl = document.getElementById("final-score");
+// Variables on the index.html page
+var timerDigit = document.getElementById("time"); // On timer div - timer in span
+var startScreen= document.getElementById("start-screen"); // On start screen div
+var startButton = document.getElementById("start"); // In button element
+var questionsEl = document.getElementById ("questions"); // In questions div
+var titleEl = document.getElementById("questions-title"); // On h2 element - questions div
+var choicesEl = document.getElementById("choices"); // div within questions div
+var endscreenEl = document.getElementById("end-screen"); // On end-screen div
+var initialsEl = document.getElementById("initials"); // p tag in end-screen div
+var submitEL = document.getElementById("submit"); // button within end-screen div
+var finalscoreEl = document.getElementById("final-score"); // p tag within end screen div
+
 // call out variable
 
+// question variables
+// looking at variables options
+var firstQuestion = ["Commonly used data types DO NOT include:"]
+var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
+
+var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
+var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
+
+var thirdQuestion = ["Arrays in Javascript can be used to store:"]
+var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
+
+var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
+var thirdAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
+
+var fifthQuestion = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
+var fourthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
 
 
+// main timer countdown
 
+startButton.addEventListener("click", function(event){
+    event.preventDefault();
+
+    var timeLeft = 75;
+
+    var timeInterval = setInterval(function(){
+        timerDigit.textContent = timeLeft;
+        timeLeft--;
+
+        if(timeLeft === 0){
+            timerDigit.textContent = "0";
+            clearInterval(timeInterval);
+        }
+    }, 1000);
+
+    console.log(event);
+});
 
 
 
@@ -40,7 +76,7 @@ var finalscoreEl = document.getElementById("final-score");
     // append that element to the high scores id
     // clear high scores to nothing once clear is clicked
     //
-    
+
 
 
 
