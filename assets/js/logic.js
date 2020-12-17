@@ -241,12 +241,12 @@ function questionSetFour(){
 
 function inCorrectAnswer4(){
     console.log("InCorrect!");
-    // questionSetFive();
+    questionSetFive();
 }
 
 function correctAnswer4(){
     console.log("That's correct! Great job!");
-    //questionSetFive();
+    questionSetFive();
 }
 
 function questionSetFive(){
@@ -262,7 +262,7 @@ function questionSetFive(){
     button3.textContent = "3. helps";
     button4.textContent = "4. console log";
 
-    titleElement.textContent = "String values must be enclosed within____ when being assigned to variables";
+    titleElement.textContent = ["A very useful tool used during development and debugging for printing content to the debugger is:"];
     document.getElementById("buttonone").addEventListener("click", inCorrectAnswer4);
     document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer4);
     document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer4);
