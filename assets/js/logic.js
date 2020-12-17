@@ -31,11 +31,11 @@ var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", 
 // "4. all of the above"
 
 var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
-var thirdAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
+var fourthAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
 // "3. quotes"
 
 var fifthQuestion = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
-var fourthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+var fifthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
 // "4. console log"
 
 
@@ -117,7 +117,7 @@ button4.setAttributeNode(att);
 
 // ["1. strings","2. booleans", "3. alerts", "4. numbers"]
 
-// first question
+// Question One
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
@@ -135,7 +135,7 @@ startButton.addEventListener("click", function(event){
 
 });
 
-// functions for correct and incorrect answers //
+// Question One - functions for correct and incorrect answers //
 
 function inCorrectAnswer1(){
     console.log("InCorrect!");
@@ -169,17 +169,124 @@ function questionSetTwo(){
 
 }
 
-// functions for incorrect and correct answers
+// Question Two - functions for incorrect and correct answers from question two
 
 function inCorrectAnswer2(){
     console.log("InCorrect!");
-    // questionSetThree();
+    questionSetThree();
 }
 
 function correctAnswer2(){
     console.log("That's correct! Great job!");
-    // questionSetThree();
+    questionSetThree();
 }
+
+// Question Three
+
+function questionSetThree(){
+
+    //Question Set Three//
+    //Removing question set one text content.
+    // ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
+    // correct answer is "4. all of the above"
+    // ["Arrays in Javascript can be used to store:"]
+
+    button1.textContent = "1. numbers and strings";
+    button2.textContent = "2. other arrays";
+    button3.textContent = "3. booleans";
+    button4.textContent = "4. all of the above";
+
+    titleElement.textContent = "Arrays in Javascript can be used to store:";
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer3);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer3);
+    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer3);
+    document.getElementById("buttonfour").addEventListener("click", correctAnswer3);
+}
+
+// Question 3 - functions for incorrect and correct answers from question 3
+
+function inCorrectAnswer3(){
+    console.log("InCorrect!");
+    questionSetFour();
+}
+
+function correctAnswer3(){
+    console.log("That's correct! Great job!");
+    questionSetFour();
+}
+
+// Question Four
+
+function questionSetFour(){
+
+    //Question Set Four//
+    //Removing question set one text content.
+    // ["String values must be enclosed within____ when being assigned to variables"]
+    // correct answer is "3. quotes"
+    // ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"]
+
+    button1.textContent = "1. commas";
+    button2.textContent = "2. curly brackets";
+    button3.textContent = "3. quotes";
+    button4.textContent = "4. parenthesis";
+
+    titleElement.textContent = "String values must be enclosed within____ when being assigned to variables";
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer4);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer4);
+    document.getElementById("buttonthree").addEventListener("click", correctAnswer4);
+    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer4);
+}
+
+// functions for incorrect and correct answers from question 4
+
+function inCorrectAnswer4(){
+    console.log("InCorrect!");
+    // questionSetFive();
+}
+
+function correctAnswer4(){
+    console.log("That's correct! Great job!");
+    //questionSetFive();
+}
+
+function questionSetFive(){
+
+    //Question Set Five//
+    //Removing question set one text content.
+    //["A very useful tool used during development and debugging for printing content to the debugger is:"]
+    // correct answer is "4. console log"
+    // ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+
+    button1.textContent = "1. Javascript";
+    button2.textContent = "2. terminal / bash";
+    button3.textContent = "3. helps";
+    button4.textContent = "4. console log";
+
+    titleElement.textContent = "String values must be enclosed within____ when being assigned to variables";
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer4);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer4);
+    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer4);
+    document.getElementById("buttonfour").addEventListener("click", correctAnswer4);
+}
+
+function inCorrectAnswer5(){
+    console.log("InCorrect!");
+    // continue testing
+}
+
+function correctAnswer5(){
+    console.log("That's correct! Great job!");
+    // continue testing
+}
+
+
+
+
+
+
+
+
+
 
 
 
