@@ -15,7 +15,6 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 // question variables
 // looking at variables options
 
-
 var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
 var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
 var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
@@ -23,16 +22,13 @@ var wrongAnswer1 = firstAnswer[0]; // This is "1. strings"
 var wrongAnswer2 = firstAnswer[1]; // This is "2. booleans"
 var wrongAnswer3 = firstAnswer[3]; // This is "4. numbers"
 
-
 var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
 var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
 // "3. parentheses"
 
-
 var thirdQuestion = ["Arrays in Javascript can be used to store:"]
 var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
 // "4. all of the above"
-
 
 var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
 var thirdAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
@@ -82,6 +78,9 @@ var button2 = document.createElement("button");
 var button3 = document.createElement("button");
 var button4 = document.createElement("button");
 
+// first question answers //
+// correct answer is 3. alerts //
+
 button1.textContent = "1. strings";
 button2.textContent = "2. booleans";
 button3.textContent = "3. alerts";
@@ -94,8 +93,29 @@ choicesEl.appendChild(button4);
 
 //creating ids for buttons //
 
-// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
+var buttonuno = document.getElementsByTagName("button")[0];
+var att = document.createAttribute("id");
+att.value = "buttonone";
+button1.setAttributeNode(att);
 
+var buttondos = document.getElementsByTagName("button")[1];
+var att = document.createAttribute("id");
+att.value = "buttontwo";
+button2.setAttributeNode(att);
+
+var buttontres = document.getElementsByTagName("button")[2];
+var att = document.createAttribute("id");
+att.value = "buttonthree";
+button3.setAttributeNode(att);
+
+var buttonquatro = document.getElementsByTagName("button")[3];
+var att = document.createAttribute("id");
+att.value = "buttonfour";
+button4.setAttributeNode(att);
+
+// testing function
+
+// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
 
 // first question
 
@@ -108,8 +128,63 @@ startButton.addEventListener("click", function(event){
     // ["1. strings","2. booleans", "3. alerts", "4. numbers"]
     // correct answer is alerts
     titleElement.textContent = "Commonly used data types DO NOT include:"
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer1);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer1);
+    document.getElementById("buttonthree").addEventListener("click", correctAnswer1);
+    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer1);
 
 });
+
+// functions for correct and incorrect answers //
+
+function inCorrectAnswer1(){
+    console.log("InCorrect!");
+    questionSetTwo();
+}
+
+function correctAnswer1(){
+    console.log("That's correct! Great job!");
+    questionSetTwo();
+}
+
+// function called for second set of questions //
+
+function questionSetTwo(){
+
+    //Question Set Two//
+    //Removing question set one text content.
+    // ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
+    // correct answer is 3. parentheses
+
+    button1.textContent = "1. quotes";
+    button2.textContent = "2. curley brackets";
+    button3.textContent = "3. parentheses";
+    button4.textContent = "4. square brackets";
+
+    titleElement.textContent = "The condition in an if / else statement is enclosed within_____."
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer2);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer2);
+    document.getElementById("buttonthree").addEventListener("click", correctAnswer2);
+    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer2);
+
+}
+
+// functions for incorrect and correct answers
+
+function inCorrectAnswer2(){
+    console.log("InCorrect!");
+    // questionSetThree();
+}
+
+function correctAnswer2(){
+    console.log("That's correct! Great job!");
+    // questionSetThree();
+}
+
+
+
+// testing functions once clicked.
+// getting
 
 
 // create event listener for button
