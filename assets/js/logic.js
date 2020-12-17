@@ -10,32 +10,32 @@ var initialsEl = document.getElementById("initials"); // p tag in end-screen div
 var submitEL = document.getElementById("submit"); // button within end-screen div
 var finalscoreEl = document.getElementById("final-score"); // p tag within end screen div
 
-// call out variable
+// call out variables
 
 // question variables
 // looking at variables options
 
-var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
-var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
-var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
-var wrongAnswer1 = firstAnswer[0]; // This is "1. strings"
-var wrongAnswer2 = firstAnswer[1]; // This is "2. booleans"
-var wrongAnswer3 = firstAnswer[3]; // This is "4. numbers"
+// var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
+// var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
+// var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
+// var wrongAnswer1 = firstAnswer[0]; // This is "1. strings"
+// var wrongAnswer2 = firstAnswer[1]; // This is "2. booleans"
+// var wrongAnswer3 = firstAnswer[3]; // This is "4. numbers"
 
-var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
-var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
+// var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
+// var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
 // "3. parentheses"
 
-var thirdQuestion = ["Arrays in Javascript can be used to store:"]
-var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
+// var thirdQuestion = ["Arrays in Javascript can be used to store:"]
+// var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
 // "4. all of the above"
 
-var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
-var fourthAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
+//var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
+// var fourthAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
 // "3. quotes"
 
-var fifthQuestion = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
-var fifthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+// var fifthQuestion = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
+// var fifthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
 // "4. console log"
 
 
@@ -140,6 +140,8 @@ startButton.addEventListener("click", function(event){
 function inCorrectAnswer1(){
     console.log("InCorrect!");
     questionSetTwo();
+    // subtractTime(); // timer currently subracting time, then re-adding it-not correct
+    //
 }
 
 function correctAnswer1(){
@@ -174,6 +176,7 @@ function questionSetTwo(){
 function inCorrectAnswer2(){
     console.log("InCorrect!");
     questionSetThree();
+    // subtractTime();
 }
 
 function correctAnswer2(){
@@ -208,6 +211,7 @@ function questionSetThree(){
 function inCorrectAnswer3(){
     console.log("InCorrect!");
     questionSetFour();
+    // subtractTime();
 }
 
 function correctAnswer3(){
@@ -242,6 +246,7 @@ function questionSetFour(){
 function inCorrectAnswer4(){
     console.log("InCorrect!");
     questionSetFive();
+    // subtractTime();
 }
 
 function correctAnswer4(){
@@ -263,25 +268,37 @@ function questionSetFive(){
     button4.textContent = "4. console log";
 
     titleElement.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer4);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer4);
-    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer4);
-    document.getElementById("buttonfour").addEventListener("click", correctAnswer4);
+    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer5);
+    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer5);
+    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer5);
+    document.getElementById("buttonfour").addEventListener("click", correctAnswer5);
 }
 
 function inCorrectAnswer5(){
     console.log("InCorrect!");
     // continue testing
+    // subtractTime();
+    // need to call out endscreenEl and end screen for hide to start
+    questionsEl.className = "hide";
+    endscreenEl.className = "start";
+
 }
 
 function correctAnswer5(){
     console.log("That's correct! Great job!");
     // continue testing
+    // need to call out endscreenEl for end screen for hide to start
+    questionsEl.className = "hide";
+    endscreenEl.className = "start";
+
 }
 
+function subtractTime(){
+    // Use text content from time interval variable to subract 15 seconds from wrong answer //
+    // this is not working correctly - review other timer
+    // timerDigit.textContent = parseInt(timerDigit.textContent - 15);
 
-
-
+}
 
 
 
