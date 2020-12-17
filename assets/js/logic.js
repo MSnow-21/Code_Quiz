@@ -3,7 +3,7 @@ var timerDigit = document.getElementById("time"); // On timer div - timer in spa
 var startScreen= document.getElementById("start-screen"); // On start screen div
 var startButton = document.getElementById("start"); // In button element
 var questionsEl = document.getElementById ("questions"); // In questions div
-var titleEl = document.getElementById("questions-title"); // On h2 element - questions div
+var titleElement = document.getElementById("question-title"); // On h2 element - questions div
 var choicesEl = document.getElementById("choices"); // div within questions div
 var endscreenEl = document.getElementById("end-screen"); // On end-screen div
 var initialsEl = document.getElementById("initials"); // p tag in end-screen div
@@ -14,20 +14,33 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 
 // question variables
 // looking at variables options
-var firstQuestion = ["Commonly used data types DO NOT include:"]
+
+
+var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
 var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
+var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
+var wrongAnswer1 = firstAnswer[0]; // This is "1. strings"
+var wrongAnswer2 = firstAnswer[1]; // This is "2. booleans"
+var wrongAnswer3 = firstAnswer[3]; // This is "4. numbers"
+
 
 var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
 var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
+// "3. parentheses"
+
 
 var thirdQuestion = ["Arrays in Javascript can be used to store:"]
 var thirdAnswers = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
+// "4. all of the above"
+
 
 var fourthQuestion = ["String values must be enclosed within____ when being assigned to variables"]
 var thirdAnswer = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
+// "3. quotes"
 
 var fifthQuestion = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
 var fourthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+// "4. console log"
 
 
 // main timer countdown
@@ -50,6 +63,53 @@ startButton.addEventListener("click", function(event){
     console.log(event);
 });
 
+// The questions div is hidden in the start screen. Once clicked, this will allow the questions div to show //
+// Process - uses var elements classnames to switch from "hide" to "start" //
+
+startButton.addEventListener("click", function(event){
+    event.preventDefault();
+    startScreen.className = "hide";
+    questionsEl.className = "start";
+});
+
+
+// trying to create a list of buttons //
+// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
+
+// creating buttons //
+var button1 = document.createElement("button");
+var button2 = document.createElement("button");
+var button3 = document.createElement("button");
+var button4 = document.createElement("button");
+
+button1.textContent = "1. strings";
+button2.textContent = "2. booleans";
+button3.textContent = "3. alerts";
+button4.textContent = "4. numbers";
+
+choicesEl.appendChild(button1);
+choicesEl.appendChild(button2);
+choicesEl.appendChild(button3);
+choicesEl.appendChild(button4);
+
+//creating ids for buttons //
+
+// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
+
+
+// first question
+
+startButton.addEventListener("click", function(event){
+    event.preventDefault();
+
+    //Question One//
+    // The title element is the h2 tag in the question div //
+    // Using textcontent to assign question text //
+    // ["1. strings","2. booleans", "3. alerts", "4. numbers"]
+    // correct answer is alerts
+    titleElement.textContent = "Commonly used data types DO NOT include:"
+
+});
 
 
 // create event listener for button
@@ -76,7 +136,4 @@ startButton.addEventListener("click", function(event){
     // append that element to the high scores id
     // clear high scores to nothing once clear is clicked
     //
-
-
-
 
