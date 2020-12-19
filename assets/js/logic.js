@@ -40,21 +40,23 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 
 
 // main timer countdown
-// Ref - Activity 9
+// Ref - Activity 9 - which did not work in for this specific application.
+// Ref - Activity 8 instead - put variable outside of function.
+// Variable of timerDigit was already defined. Needed to assign text content.
+
+timerDigit.textContent = 75;
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    // This is will be 75 seconds. 1000 is in milliseconds. 
-    // timeLeft in timeInterval subtracts each second.
-
-    var timeLeft = 75;
+    // This is will be 75 seconds. 1000 is in milliseconds.
+    // see timerdigit variable defined above in variables.
+    // added/defined text content of timer digit outside of function to prevent time restarting. 
 
     var timeInterval = setInterval(function(){
-        timerDigit.textContent = timeLeft;
-        timeLeft--;
+        timerDigit.textContent--;
 
-        if(timeLeft === 0){
+        if(timerDigit.textContent === 0){
             timerDigit.textContent = ""
             clearInterval(timeInterval);
         }
@@ -119,6 +121,10 @@ button4.setAttributeNode(att);
 
 // Question One
 
+// Worked with learning assistant - testing making this into function without event listener
+// call from timer function instead that has event listener
+// tested later - not working until text content was defined outside of timer function (ref activity 8)
+
 startButton.addEventListener("click", function(event){
     event.preventDefault();
 
@@ -137,15 +143,12 @@ startButton.addEventListener("click", function(event){
 
 // Question One - functions for correct and incorrect answers //
 
-// Exploring using an event listener for the timer
-
-
-
 function inCorrectAnswer1(){
     console.log("InCorrect!");
     // Ref timerDigit.TextContent
     // testing timer subtraction
-    timerDigit.textContent = timerDigit.textContent - 15;
+    // this subtraction works now - 75/5 is 15
+    timerDigit.textContent = timerDigit.textContent- 15;
 
     questionSetTwo();
 }
