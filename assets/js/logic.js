@@ -124,6 +124,7 @@ button4.setAttributeNode(att);
 // Worked with learning assistant - testing making this into function without event listener
 // call from timer function instead that has event listener
 // tested later - not working until text content was defined outside of timer function (ref activity 8)
+// still testing - saw that timer is subtracting from correct answers as well
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
