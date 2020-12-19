@@ -18,9 +18,9 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 // var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
 // var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
 // var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
-// var wrongAnswer1 = firstAnswer[0]; // This is "1. strings"
-// var wrongAnswer2 = firstAnswer[1]; // This is "2. booleans"
-// var wrongAnswer3 = firstAnswer[3]; // This is "4. numbers"
+// var inCorrectAnswer1 = firstAnswer[0]; // This is "1. strings"
+// var inCorrectAnswer2 = firstAnswer[1]; // This is "2. booleans"
+// var inCorrectAnswer3 = firstAnswer[3]; // This is "4. numbers"
 
 // var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
 // var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
@@ -40,9 +40,13 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 
 
 // main timer countdown
+// Ref - Activity 9
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
+
+    // This is will be 75 seconds. 1000 is in milliseconds. 
+    // timeLeft in timeInterval subtracts each second.
 
     var timeLeft = 75;
 
@@ -51,7 +55,7 @@ startButton.addEventListener("click", function(event){
         timeLeft--;
 
         if(timeLeft === 0){
-            timerDigit.textContent = "0";
+            timerDigit.textContent = ""
             clearInterval(timeInterval);
         }
     }, 1000);
@@ -91,7 +95,7 @@ choicesEl.appendChild(button2);
 choicesEl.appendChild(button3);
 choicesEl.appendChild(button4);
 
-//creating ids for buttons //
+//creating ids for buttons - for event listeners //
 
 var buttonuno = document.getElementsByTagName("button")[0];
 var att = document.createAttribute("id");
@@ -113,10 +117,6 @@ var att = document.createAttribute("id");
 att.value = "buttonfour";
 button4.setAttributeNode(att);
 
-// testing function
-
-// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
-
 // Question One
 
 startButton.addEventListener("click", function(event){
@@ -137,11 +137,17 @@ startButton.addEventListener("click", function(event){
 
 // Question One - functions for correct and incorrect answers //
 
+// Exploring using an event listener for the timer
+
+
+
 function inCorrectAnswer1(){
     console.log("InCorrect!");
+    // Ref timerDigit.TextContent
+    // testing timer subtraction
+    timerDigit.textContent = timerDigit.textContent - 15;
+
     questionSetTwo();
-    // subtractTime(); // timer currently subracting time, then re-adding it-not correct
-    //
 }
 
 function correctAnswer1(){
@@ -176,7 +182,6 @@ function questionSetTwo(){
 function inCorrectAnswer2(){
     console.log("InCorrect!");
     questionSetThree();
-    // subtractTime();
 }
 
 function correctAnswer2(){
@@ -211,7 +216,6 @@ function questionSetThree(){
 function inCorrectAnswer3(){
     console.log("InCorrect!");
     questionSetFour();
-    // subtractTime();
 }
 
 function correctAnswer3(){
@@ -246,7 +250,6 @@ function questionSetFour(){
 function inCorrectAnswer4(){
     console.log("InCorrect!");
     questionSetFive();
-    // subtractTime();
 }
 
 function correctAnswer4(){
@@ -292,19 +295,6 @@ function correctAnswer5(){
     endscreenEl.className = "start";
 
 }
-
-function subtractTime(){
-    // Use text content from time interval variable to subract 15 seconds from wrong answer //
-    // this is not working correctly - review other timer
-    // timerDigit.textContent = parseInt(timerDigit.textContent - 15);
-
-}
-
-
-
-
-
-
 
 
 // testing functions once clicked.
