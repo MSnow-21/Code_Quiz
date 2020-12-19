@@ -12,15 +12,9 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 
 // call out variables
 
-// question variables
-// looking at variables options
-
 // var firstQuestion = ["Commonly used data types DO NOT include:", "nothing here"];
 // var firstAnswer = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
-// var answerOne = firstAnswer[2]; // correct answer is "3. alerts". This is the 2 Index
-// var inCorrectAnswer1 = firstAnswer[0]; // This is "1. strings"
-// var inCorrectAnswer2 = firstAnswer[1]; // This is "2. booleans"
-// var inCorrectAnswer3 = firstAnswer[3]; // This is "4. numbers"
+// correct answer is "3. alerts".
 
 // var secondQuestion = ["The condition in an if / else statement is enclosed within_____."]
 // var secondAnswer = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
@@ -38,26 +32,18 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 // var fifthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
 // "4. console log"
 
-
-// main timer countdown
-// Ref - Activity 9 - which did not work in for this specific application.
-// Ref - Activity 8 instead - put variable outside of function.
-// Variable of timerDigit was already defined. Needed to assign text content.
+// Main timer
 
 timerDigit.textContent = 75;
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    // This is will be 75 seconds. 1000 is in milliseconds.
-    // see timerdigit variable defined above in variables.
-    // added/defined text content of timer digit outside of function to prevent time restarting. 
-
     var timeInterval = setInterval(function(){
         timerDigit.textContent--;
 
         if(timerDigit.textContent === 0){
-            timerDigit.textContent = ""
+            timerDigit.textContent = "0";
             clearInterval(timeInterval);
         }
     }, 1000);
@@ -74,134 +60,90 @@ startButton.addEventListener("click", function(event){
     questionsEl.className = "start";
 });
 
+// office hours tutoring - worked on overall process and function call outs.
+// added for loop
 
-// trying to create a list of buttons //
-// ["1. strings","2. booleans", "3. alerts", "4. numbers"]
+for (var i=1; i<5; i++){
+    var button = document.createElement("button");
+    button.id = "button" + i;
+    button.classList.add("answerButton");
+    choicesEl.appendChild(button);
+}
 
-// creating buttons //
-var button1 = document.createElement("button");
-var button2 = document.createElement("button");
-var button3 = document.createElement("button");
-var button4 = document.createElement("button");
-
-// first question answers //
-// correct answer is 3. alerts //
+var button1 = document.getElementById("button1")
+var button2 = document.getElementById("button2")
+var button3 = document.getElementById("button3")
+var button4 = document.getElementById("button4")
 
 button1.textContent = "1. strings";
 button2.textContent = "2. booleans";
 button3.textContent = "3. alerts";
 button4.textContent = "4. numbers";
 
-choicesEl.appendChild(button1);
-choicesEl.appendChild(button2);
-choicesEl.appendChild(button3);
-choicesEl.appendChild(button4);
+var currentQuestionFunction = questionSetTwo; // see questions below. reassigns variable as program moves through.
 
-//creating ids for buttons - for event listeners //
+// var answerButtons = document.getElementsByClassName("answerButton");
+// answerButtons.forEach((button)=>{button.addEventListener("click", function(e){console.log(e)})})
 
-var buttonuno = document.getElementsByTagName("button")[0];
-var att = document.createAttribute("id");
-att.value = "buttonone";
-button1.setAttributeNode(att);
+document.addEventListener("click", function(e){
+    let answer = e.target.getAttribute("data-id");
+    if (answer === "correct"){
+        correctAnswer(currentQuestionFunction); // see variable called out on line 82
+    }else if (answer === "incorrect"){
+        inCorrectAnswer(currentQuestionFunction); // see variable called out on line 82
+    }
 
-var buttondos = document.getElementsByTagName("button")[1];
-var att = document.createAttribute("id");
-att.value = "buttontwo";
-button2.setAttributeNode(att);
-
-var buttontres = document.getElementsByTagName("button")[2];
-var att = document.createAttribute("id");
-att.value = "buttonthree";
-button3.setAttributeNode(att);
-
-var buttonquatro = document.getElementsByTagName("button")[3];
-var att = document.createAttribute("id");
-att.value = "buttonfour";
-button4.setAttributeNode(att);
+});
 
 // Question One
-
-// Worked with learning assistant - testing making this into function without event listener
-// call from timer function instead that has event listener
-// tested later - not working until text content was defined outside of timer function (ref activity 8)
-// still testing - saw that timer is subtracting from correct answers as well
+// correct answer is 3
 
 startButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    //Question One//
-    // The title element is the h2 tag in the question div //
-    // Using textcontent to assign question text //
-    // ["1. strings","2. booleans", "3. alerts", "4. numbers"]
-    // correct answer is alerts
     titleElement.textContent = "Commonly used data types DO NOT include:"
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer1);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer1);
-    document.getElementById("buttonthree").addEventListener("click", correctAnswer1);
-    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer1);
+    button1.setAttribute("data-id", "incorrect")
+    button2.setAttribute("data-id", "incorrect")
+    button3.setAttribute("data-id", "correct")
+    button4.setAttribute("data-id", "incorrect")
+    console.log(event.target)
 
 });
 
-// Question One - functions for correct and incorrect answers //
-
-function inCorrectAnswer1(){
+function inCorrectAnswer(nextQuestionFunction){
     console.log("InCorrect!");
-    // Ref timerDigit.TextContent
-    // testing timer subtraction
-    // this subtraction works now - 75/5 is 15
-    timerDigit.textContent = timerDigit.textContent- 15;
-
-    questionSetTwo();
+    nextQuestionFunction();
 }
 
-function correctAnswer1(){
+function correctAnswer(nextQuestionFunction){
     console.log("That's correct! Great job!");
-    questionSetTwo();
+    nextQuestionFunction();
 }
 
-// function called for second set of questions //
+// Question 2
 
 function questionSetTwo(){
-
-    //Question Set Two//
-    //Removing question set one text content.
-    // ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
-    // correct answer is 3. parentheses
 
     button1.textContent = "1. quotes";
     button2.textContent = "2. curley brackets";
     button3.textContent = "3. parentheses";
     button4.textContent = "4. square brackets";
 
+    // correct answer is 3
+
     titleElement.textContent = "The condition in an if / else statement is enclosed within_____."
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer2);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer2);
-    document.getElementById("buttonthree").addEventListener("click", correctAnswer2);
-    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer2);
-
+    button1.setAttribute("data-id", "incorrect")
+    button2.setAttribute("data-id", "incorrect")
+    button3.setAttribute("data-id", "correct")
+    button4.setAttribute("data-id", "incorrect")
+    currentQuestionFunction = questionSetThree;
 }
 
-// Question Two - functions for incorrect and correct answers from question two
-
-function inCorrectAnswer2(){
-    console.log("InCorrect!");
-    questionSetThree();
-}
-
-function correctAnswer2(){
-    console.log("That's correct! Great job!");
-    questionSetThree();
-}
-
-// Question Three
+// Question 3
 
 function questionSetThree(){
 
-    //Question Set Three//
-    //Removing question set one text content.
-    // ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
     // correct answer is "4. all of the above"
-    // ["Arrays in Javascript can be used to store:"]
 
     button1.textContent = "1. numbers and strings";
     button2.textContent = "2. other arrays";
@@ -209,65 +151,35 @@ function questionSetThree(){
     button4.textContent = "4. all of the above";
 
     titleElement.textContent = "Arrays in Javascript can be used to store:";
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer3);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer3);
-    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer3);
-    document.getElementById("buttonfour").addEventListener("click", correctAnswer3);
+    button1.setAttribute("data-id", "incorrect")
+    button2.setAttribute("data-id", "incorrect")
+    button3.setAttribute("data-id", "incorrect")
+    button4.setAttribute("data-id", "correct")
+    currentQuestionFunction = questionSetFour;
+    
 }
-
-// Question 3 - functions for incorrect and correct answers from question 3
-
-function inCorrectAnswer3(){
-    console.log("InCorrect!");
-    questionSetFour();
-}
-
-function correctAnswer3(){
-    console.log("That's correct! Great job!");
-    questionSetFour();
-}
-
-// Question Four
 
 function questionSetFour(){
-
-    //Question Set Four//
-    //Removing question set one text content.
-    // ["String values must be enclosed within____ when being assigned to variables"]
-    // correct answer is "3. quotes"
-    // ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"]
 
     button1.textContent = "1. commas";
     button2.textContent = "2. curly brackets";
     button3.textContent = "3. quotes";
     button4.textContent = "4. parenthesis";
 
+    // correct answer is 3.
+
     titleElement.textContent = "String values must be enclosed within____ when being assigned to variables";
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer4);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer4);
-    document.getElementById("buttonthree").addEventListener("click", correctAnswer4);
-    document.getElementById("buttonfour").addEventListener("click", inCorrectAnswer4);
-}
+    button1.setAttribute("data-id", "incorrect")
+    button2.setAttribute("data-id", "incorrect")
+    button3.setAttribute("data-id", "correct")
+    button4.setAttribute("data-id", "incorrect")
+    currentQuestionFunction = questionSetFive;
 
-// functions for incorrect and correct answers from question 4
-
-function inCorrectAnswer4(){
-    console.log("InCorrect!");
-    questionSetFive();
-}
-
-function correctAnswer4(){
-    console.log("That's correct! Great job!");
-    questionSetFive();
 }
 
 function questionSetFive(){
 
-    //Question Set Five//
-    //Removing question set one text content.
-    //["A very useful tool used during development and debugging for printing content to the debugger is:"]
-    // correct answer is "4. console log"
-    // ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+    // correct answer is 4
 
     button1.textContent = "1. Javascript";
     button2.textContent = "2. terminal / bash";
@@ -275,29 +187,10 @@ function questionSetFive(){
     button4.textContent = "4. console log";
 
     titleElement.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
-    document.getElementById("buttonone").addEventListener("click", inCorrectAnswer5);
-    document.getElementById("buttontwo").addEventListener("click", inCorrectAnswer5);
-    document.getElementById("buttonthree").addEventListener("click", inCorrectAnswer5);
-    document.getElementById("buttonfour").addEventListener("click", correctAnswer5);
-}
-
-function inCorrectAnswer5(){
-    console.log("InCorrect!");
-    // continue testing
-    // subtractTime();
-    // need to call out endscreenEl and end screen for hide to start
-    questionsEl.className = "hide";
-    endscreenEl.className = "start";
-
-}
-
-function correctAnswer5(){
-    console.log("That's correct! Great job!");
-    // continue testing
-    // need to call out endscreenEl for end screen for hide to start
-    questionsEl.className = "hide";
-    endscreenEl.className = "start";
-
+    button1.setAttribute("data-id", "incorrect")
+    button2.setAttribute("data-id", "incorrect")
+    button3.setAttribute("data-id", "incorrect")
+    button4.setAttribute("data-id", "correct")
 }
 
 
