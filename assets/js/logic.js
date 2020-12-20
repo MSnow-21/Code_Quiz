@@ -32,6 +32,10 @@ var finalscoreEl = document.getElementById("final-score"); // p tag within end s
 // var fifthAnswer = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
 // "4. console log"
 
+// setting local storage
+
+localStorage.setItem("score", 0);
+
 // Main timer
 
 timerDigit.textContent = 75;
@@ -43,14 +47,15 @@ startButton.addEventListener("click", function(event){
         timerDigit.textContent--;
 
         if(timerDigit.textContent === 0){
-            timerDigit.textContent = "0";
+            timerDigit.textContent = "";
             clearInterval(timeInterval);
         }
-    }, 1000);
 
+
+    }, 1000);
+    
     console.log(event);
 });
-
 // The questions div is hidden in the start screen. Once clicked, this will allow the questions div to show //
 // Process - uses var elements classnames to switch from "hide" to "start" //
 
@@ -58,6 +63,8 @@ startButton.addEventListener("click", function(event){
     event.preventDefault();
     startScreen.className = "hide";
     questionsEl.className = "start";
+    // added local storage start here
+    localStorage.setItem("score", "0");
 });
 
 // office hours tutoring - worked on overall process and function call outs.
@@ -89,9 +96,15 @@ document.addEventListener("click", function(e){
     let answer = e.target.getAttribute("data-id");
     if (answer === "correct"){
         correctAnswer(currentQuestionFunction); // see variable called out on line 82
+        var score = parseInt(localStorage.getItem("score")); // need to use parseInt otherwise digits do not show up correctly
+        localStorage.setItem("score", score+5);
+
+
     }else if (answer === "incorrect"){
         inCorrectAnswer(currentQuestionFunction); // see variable called out on line 82
+        timerDigit.textContent = parseInt(timerDigit.textContent) - 15;
     }
+    
 
 });
 
@@ -102,6 +115,7 @@ startButton.addEventListener("click", function(event){
     event.preventDefault();
 
     titleElement.textContent = "Commonly used data types DO NOT include:"
+    
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "correct")
@@ -191,12 +205,10 @@ function questionSetFive(){
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "incorrect")
     button4.setAttribute("data-id", "correct")
+
 }
 
-
-// testing functions once clicked.
-// getting
-
+// Final Score //
 
 // create event listener for button
 // activite timer countdown
