@@ -11,25 +11,25 @@ var submitEL = document.getElementById("submit"); // button within end-screen di
 var finalscoreEl = document.getElementById("final-score"); // p tag within end screen div
 var feedbackEl = document.getElementById("feedback"); // div below enter initials screen
 
-// Questions
-// "Commonly used data types DO NOT include:", "nothing here"
+// Questions - Arrays
+var questionOne = ["Commonly used data types DO NOT include:", "nothing here"]
 var multChoiceOne = ["1. strings","2. booleans", "3. alerts", "4. numbers"];
 // correct answer is "3. alerts".
 
-// "The condition in an if / else statement is enclosed within_____."
+var questionTwo = ["The condition in an if / else statement is enclosed within_____."]
 var multChoiceTwo = ["1. qoutes", "2. curly brackets", "3. parentheses", "4. square brackets"];
 // "3. parentheses"
 
-// "Arrays in Javascript can be used to store:"
+var questionThree = ["Arrays in Javascript can be used to store:"]
 var multChoiceThree = ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"];
 // "4. all of the above"
 
-//"String values must be enclosed within____ when being assigned to variables"
+var questionFour = ["String values must be enclosed within____ when being assigned to variables"]
 var multChoiceFour = ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"];
 // "3. quotes"
 
-// "A very useful tool used during development and debugging for printing content to the debugger is:"
-var multChoiceFive = ["1. Javascript", "2. terminal / bash", "3. helps", "4. console log"];
+var questionFive = ["A very useful tool used during development and debugging for printing content to the debugger is:"]
+var multChoiceFive = ["1. Javascript", "2. terminal / bash", "3. for helps", "4. console log"];
 // "4. console log"
 
 
@@ -37,31 +37,12 @@ var multChoiceFive = ["1. Javascript", "2. terminal / bash", "3. helps", "4. con
 
 localStorage.setItem("score", 0);
 
+
 // Main timer
 
 var time = 75;
 timerDigit.textContent = time;
 
-// seconds = timerDigit.textContent;
-
-// let counter = timerDigit.textContent;
-
-// Timer Style 3 - working timer
-
-// function startCountdown(){
-//     var timeInterval = setInterval(function(){
-//         counter--;
-//         timerDigit.textContent = counter;
-//         console.log(counter);
-
-//         if(counter < 0){
-//             clearInterval(timeInterval);
-//             timerDigit.textContent = "0";
-//             endScreen();
-//         }
-        
-//     }, 1000);
-// }
 
 // Timer Style 4
 
@@ -79,46 +60,6 @@ function startCountdown(){
     }, 1000);
 };
 
-
-// Testing timers - since time will not subtract from timerDigit.textContent
-// Timer Style 1
-
-// timerDigit.textContent = 75;
-
-// startButton.addEventListener("click", function(event){
-//     event.preventDefault();
-
-//     var timeInterval = setInterval(function(){
-//         timerDigit.textContent--;
-
-//         if(timerDigit.textContent < 0){
-//             timerDigit.textContent === 0;
-//             clearInterval(timeInterval);
-//         }
-
-
-//     }, 1000);
-// });
-
-
-// Timer style 2
-
-// function startCountdown(seconds){
-//     let counter = seconds;
-
-//     const interval = setInterval(function(){
-//         console.log(counter);
-//         counter--;
-//         timerDigit.textContent = counter;
-
-//         if (counter < 0) {
-//             clearInterval(interval);
-//             timerDigit.textContent = "0";
-//         }
-
-//     }, 1000);
-// }
-
 // Event listener for start button
 
 startButton.addEventListener("click", function(event){
@@ -131,8 +72,7 @@ startButton.addEventListener("click", function(event){
     startCountdown();
 });
 
-// office hours tutoring - worked on overall process and function call outs.
-// added for-loop
+// for-loop
 
 for (var i=1; i<5; i++){
     var button = document.createElement("button");
@@ -147,6 +87,8 @@ var button1 = document.getElementById("button1")
 var button2 = document.getElementById("button2")
 var button3 = document.getElementById("button3")
 var button4 = document.getElementById("button4")
+
+// button text content
 
 button1.textContent = multChoiceOne[0];
 // button1.textContent = "1. strings";
@@ -182,7 +124,7 @@ document.addEventListener("click", function(e){
 startButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    titleElement.textContent = "Commonly used data types DO NOT include:"
+    titleElement.textContent = questionOne[0];
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "correct")
@@ -216,7 +158,7 @@ function questionSetTwo(){
 
     // correct answer is 3
 
-    titleElement.textContent = "The condition in an if / else statement is enclosed within_____."
+    titleElement.textContent = questionTwo[0];
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "correct")
@@ -239,7 +181,7 @@ function questionSetThree(){
     button4.textContent = multChoiceThree[3];
     // button4.textContent = "4. all of the above";
 
-    titleElement.textContent = "Arrays in Javascript can be used to store:";
+    titleElement.textContent = questionThree[0];
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "incorrect")
@@ -261,7 +203,7 @@ function questionSetFour(){
 
     // correct answer is 3.
 
-    titleElement.textContent = "String values must be enclosed within____ when being assigned to variables";
+    titleElement.textContent = questionFour[0];
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "correct")
@@ -283,7 +225,7 @@ function questionSetFive(){
     button4.textContent = multChoiceFive[3];
     // button4.textContent = "4. console log";
 
-    titleElement.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
+    titleElement.textContent = questionFive[0];
     button1.setAttribute("data-id", "incorrect")
     button2.setAttribute("data-id", "incorrect")
     button3.setAttribute("data-id", "incorrect")
@@ -311,15 +253,14 @@ submitEL.addEventListener("click", function(event){
     event.preventDefault();
 
     var initials = document.querySelector("#initials").value;
+    var numberIn = initials.length
     // var finalscore = document.querySelector("#final-score").value;
     var lastScore = localStorage.getItem("score");
 
-    if (initials === ""){
-        displayMessage("Error - Please enter 3 initials");
-    }else if (initials < 2){
-        displayMessage("Error - Please enter 3 initials")
+    if(numberIn ===3){
+        displayMessage("Success - initials entered");
     }else{
-        displayMessage("Success- value entered")
+        displayMessage("Error-Please enter 3 initials");
     }
 
     localStorage.setItem("initials", initials);
@@ -328,33 +269,4 @@ submitEL.addEventListener("click", function(event){
     feedbackEl.setAttribute("class", "feedback-start")
 
 });
-
-
-
-// Final Score //
-
-// create event listener for button
-// activite timer countdown
-// show questions
-    // build question arrays
-        // build a for loop to go through arrays
-        // it needs to create buttons
-        // event listener for each answer button
-        // correct answer add point
-            // how to show extra points in final scoring set
-            // set item/get item local storage.
-        // wrong answer subract extra time
-            // go to next question
-            // keep time going
-            // final button answer - go to score screen
-// score screen
-    // display value of local storage as score
-    // input field for initials
-        // store initials as local storage.
-        // link to high scores page.
-// high scores page
-    // create an element with two local storage items.
-    // append that element to the high scores id
-    // clear high scores to nothing once clear is clicked
-    //
 
