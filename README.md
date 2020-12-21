@@ -14,7 +14,7 @@ Local storage for correct answer
 ![](assets/images/codequizlocalstorage.png)
 
 Time penalty for wrong answer
-![](assets/images/codequizpenalty.png)
+![](assets/images/codequizpenality.png)
 
 Entering initials to collect scores
 ![](assets/images/codequizinitials.png)
